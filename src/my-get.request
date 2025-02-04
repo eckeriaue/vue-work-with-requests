@@ -1,0 +1,231 @@
+
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Smartics API",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "[R4]"
+    }
+  ],
+  "paths": {
+    "todos/1": {
+      "get": {
+        "summary": "Get Dashboards",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "[R4]"
+        ],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "20",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortDesc",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "taggedOnly",
+            "in": "query",
+            "description": "Returns only tagged dashboards by current user. Otherwise, returns all",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "categoryId",
+            "in": "query",
+            "description": "Categories ID splitted by comma",
+            "required": false,
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "isPublished",
+            "in": "query",
+            "description": "Returns published dashboards if true. Otherwise, returns unpublished dashboards",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_count": {
+                      "type": "integer"
+                    },
+                    "has_next_page": {
+                      "type": "boolean"
+                    },
+                    "payload": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string",
+                            "format": "uri"
+                          },
+                          "isTagged": {
+                            "type": "boolean",
+                            "description": "is it tagged by current user"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "description",
+                          "url",
+                          "isTagged"
+                        ]
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+
+                      }
+                    }
+                  },
+                  "required": [
+                    "total_pages",
+                    "total_count",
+                    "has_next_page",
+                    "payload",
+                    "meta"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "total_pages": 1,
+                      "total_count": 4,
+                      "has_next_page": false,
+                      "payload": [
+                        {
+                          "id": "71530364-e194-463a-8981-add482f58498",
+                          "name": "социально-ориентированный отметить выбранный3",
+                          "description": "",
+                          "url": "http://bi.sechenov.org/d/fjP3vALVz/new-dashboard?orgId=1",
+                          "isTagged": false
+                        },
+                        {
+                          "id": "d192853b-a66d-42b9-b73c-cad322e9cd1d",
+                          "name": "социально-ориентированный отметить выбранный2",
+                          "description": "",
+                          "url": "http://bi.sechenov.org/d/fjP3vALVz/new-dashboard?orgId=1",
+                          "isTagged": false
+                        },
+                        {
+                          "id": "07c0ea4a-df52-438f-af3b-6687a84fb208",
+                          "name": "социально-ориентированный отметить выбранный1",
+                          "description": "",
+                          "url": "http://bi.sechenov.org/d/fjP3vALVz/new-dashboard?orgId=1",
+                          "isTagged": false
+                        },
+                        {
+                          "id": "9fd864c6-a2d3-469a-baf6-4bdc3befd324",
+                          "name": "социально-ориентированный отметить выбранный",
+                          "description": "",
+                          "url": "http://bi.sechenov.org/d/fjP3vALVz/new-dashboard?orgId=1",
+                          "isTagged": false
+                        }
+                      ],
+                      "meta": {
+
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+
+    },
+    "securitySchemes": {
+
+    }
+  },
+  "servers": []
+}
